@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} - Home{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1 class="text-center">Mon portfolio! </h1>
+    <div class="row">
+        {% for project in projects %}
+        <div class="col-lg-4 col-md-6 col-xs-12">
+            <h2>{{project.title}}</h2>
+            <p>{{project.description|raw}}</p>
+            <small>{{project.createdAt|date('d/m/Y')}}</small>
+            <img src="{{project.illustration}}" alt="">
+
+            <ul>
+                {% for techno in project.technos %}
+                <li>{{techno}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
